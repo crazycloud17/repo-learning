@@ -21,7 +21,14 @@ jobs:
       uses: azure/acr-build@v1
       with:
         service_principal: ${{ secrets.AZURE_CREDENTIALS }}
-        registry: learningacrpk01
-        repository: learning-app
-        image: v1
-        dockerfile: Dockerfile
+       - uses: azure/docker-login@v1
+  with:
+    login-server: learningacrpk01.azurecr.io
+    username: ${{ secrets.ACR_USERNAME }}
+    password: ${{ secrets.ACR_PASSWORD }}
+
+- name: Build and push image
+  run: |
+    docker build -t learningacrpk01.azurecr.io/learning-app:v1 .
+    docker push learningacrpk01.azurecr.io/learning-app:v1
+
