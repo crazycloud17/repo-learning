@@ -19,7 +19,7 @@ jobs:
       with:
         login-server: learningacrpk01.azurecr.io
         username: ${{ secrets.learningacrpk01 }}
-        password: ${{ secrets./xx4Oltjwcxw00P76YY03JuxGAzsIodFyue6cEph25+ACRBmXHYe }}
+        password: ${{ secrets.b5qSuO646515+KB1z4b8Brvi1CYof/5ok4a+D2OdWQ+ACRD3wPbI }}
 
     - name: Build and Push image
       run: |
