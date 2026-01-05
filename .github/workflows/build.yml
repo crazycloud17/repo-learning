@@ -18,7 +18,7 @@ jobs:
       uses: azure/docker-login@v1
       with:
         login-server: learningacrpk01.azurecr.io
-        username: ${{ secrets.learningacrpk01 }}
+        username: ${{ secrets.ACR_learningacrpk01 }}
         password: ${{ secrets.CtJZfSLmHXSZEun08SOoWtcet0DuhIWuKnM8n0R3TH+ACRClbCwM }}
 
     - name: Build and Push image
