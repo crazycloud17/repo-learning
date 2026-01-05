@@ -1,27 +1,10 @@
-name: Build and Push to ACR
-on: push
+- uses: azure/docker-login@v1
+  with:
+    login-server: learningacrpk01.azurecr.io
+    username: ${{ secrets.learningacrpk01 }}
+    password: ${{ secrets.TRGYchVLxvkMItE9HP9H0Ia8sB+bpmJ/7k4Ec9nKJL+ACRBB09mt }}
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: Azure Login
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Docker Login to ACR
-      uses: azure/docker-login@v1
-      with:
-        login-server: learningacrpk01.azurecr.io
-        username: ${{ secrets.learningacrpk01 }}
-        password: ${{ secrets.CtJZfSLmHXSZEun08SOoWtcet0DuhIWuKnM8n0R3TH+ACRClbCwM }}
-
-    - name: Build and Push image
-      run: |
-        docker build -t learningacrpk01.azurecr.io/learning-app:v1 .
-        docker push learningacrpk01.azurecr.io/learning-app:v1
+- name: Build and push image
+  run: |
+    docker build -t learningacrpk01.azurecr.io/learning-app:v1 .
+    docker push learningacrpk01.azurecr.io/learning-app:v1
